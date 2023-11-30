@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #deleteForm button {
+            background-color: #dc3545;
+        }
+
+        #deleteForm button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Изменить пользователя</h2>
+    <form th:action="@{'/admin/' +${user.id}+ '/edit-delete'}" method="post">
+        <div class="form-group">
+            <label for="name">ФИО</label>
+            <input type="text" id="name" name="name" >
+        </div>
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="text" id="email" name="email" >
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Изменить пользователя</button>
+        </div>
+    </form>
+</div>
+
+<form id="deleteForm" th:action="@{'/admin/' +${user.id}+ '/delete'}" method="post">
+    <button type="button" onclick="deleteDiscipline()">Удалить пользователя</button>
+</form>
+
+<script>
+    function deleteDiscipline() {
+        var confirmDelete = confirm("Вы уверены что хотите удалить эту дисциплину");
+
+        if (confirmDelete) {
+            document.getElementById('deleteForm').submit();
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Email</th>
+        <th>Имя 2</th>
+        <th>Активен</th>
+    </tr>
+
+    <tr th:each="user : ${allusers}">
+        <td th:text="${user.name}">101</td>
+        <td th:text="${user.email}">101</td>
+        <td th:text="${user.username}">101</td>
+        <td th:text="${user.active}">101</td>
+    </tr>
+</table>
+
+</body>
+</html>
